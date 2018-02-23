@@ -1,76 +1,96 @@
 package com.udacity.sandwichclub.model;
 
+import android.text.TextUtils;
 import java.util.List;
 
 public class Sandwich {
 
-    private String mainName;
-    private List<String> alsoKnownAs = null;
-    private String placeOfOrigin;
-    private String description;
-    private String image;
-    private List<String> ingredients = null;
+  private static final String NOT_AVAILABLE = "not available";
 
-    /**
-     * No args constructor for use in serialization
-     */
-    public Sandwich() {
-    }
+  private String mainName;
+  private List<String> alsoKnownAs = null;
+  private String placeOfOrigin;
+  private String description;
+  private String image;
+  private List<String> ingredients = null;
 
-    public Sandwich(String mainName, List<String> alsoKnownAs, String placeOfOrigin, String description, String image, List<String> ingredients) {
-        this.mainName = mainName;
-        this.alsoKnownAs = alsoKnownAs;
-        this.placeOfOrigin = placeOfOrigin;
-        this.description = description;
-        this.image = image;
-        this.ingredients = ingredients;
-    }
+  /**
+   * No args constructor for use in serialization
+   */
+  public Sandwich() {
+  }
 
-    public String getMainName() {
-        return mainName;
-    }
+  public Sandwich(String mainName, List<String> alsoKnownAs, String placeOfOrigin,
+      String description, String image, List<String> ingredients) {
+    this.mainName = mainName;
+    this.alsoKnownAs = alsoKnownAs;
+    this.placeOfOrigin = placeOfOrigin;
+    this.description = description;
+    this.image = image;
+    this.ingredients = ingredients;
+  }
 
-    public void setMainName(String mainName) {
-        this.mainName = mainName;
-    }
+  public String getMainName() {
+    return mainName;
+  }
 
-    public List<String> getAlsoKnownAs() {
-        return alsoKnownAs;
-    }
+  public void setMainName(String mainName) {
+    this.mainName = mainName;
+  }
 
-    public void setAlsoKnownAs(List<String> alsoKnownAs) {
-        this.alsoKnownAs = alsoKnownAs;
-    }
+  public List<String> getAlsoKnownAs() {
+    return alsoKnownAs;
+  }
 
-    public String getPlaceOfOrigin() {
-        return placeOfOrigin;
+  public String getAlsoKnownAsString() {
+    if (getAlsoKnownAs() != null) {
+      return TextUtils.join(", ", getAlsoKnownAs());
+    } else {
+      return NOT_AVAILABLE;
     }
+  }
 
-    public void setPlaceOfOrigin(String placeOfOrigin) {
-        this.placeOfOrigin = placeOfOrigin;
-    }
+  public void setAlsoKnownAs(List<String> alsoKnownAs) {
+    this.alsoKnownAs = alsoKnownAs;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public String getPlaceOfOrigin() {
+    return placeOfOrigin.isEmpty() ? NOT_AVAILABLE : placeOfOrigin;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public void setPlaceOfOrigin(String placeOfOrigin) {
+    this.placeOfOrigin = placeOfOrigin;
+  }
 
-    public String getImage() {
-        return image;
-    }
+  public String getDescription() {
+    return description.isEmpty() ? NOT_AVAILABLE : description;
+  }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public List<String> getIngredients() {
-        return ingredients;
-    }
+  public String getImage() {
+    return image;
+  }
 
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
+  public void setImage(String image) {
+    this.image = image;
+  }
+
+  public List<String> getIngredients() {
+    return ingredients;
+  }
+
+  public String getIngredientsString() {
+    if (getIngredients() != null) {
+      return TextUtils.join(", ", getIngredients());
+    } else {
+      return NOT_AVAILABLE;
     }
+  }
+
+  public void setIngredients(List<String> ingredients) {
+    this.ingredients = ingredients;
+  }
 }
