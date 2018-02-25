@@ -54,6 +54,11 @@ public class DetailActivity extends AppCompatActivity {
     Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
   }
 
+
+  /**
+   * Loads an Image by a given String Source to an ImageView. It also can be used for
+   * DataBinding.
+   */
   @BindingAdapter({"image"})
   public static void loadImage(ImageView view, String image) {
     Picasso.with(view.getContext())
