@@ -56,13 +56,19 @@ public class DetailActivity extends AppCompatActivity {
 
 
   /**
-   * Loads an Image by a given String Source to an ImageView. It also can be used for
-   * DataBinding.
+   * Loads an Image by a given String Source to an ImageView.
+   * It also can be used for DataBinding.
    */
   @BindingAdapter({"image"})
   public static void loadImage(ImageView view, String image) {
-    Picasso.with(view.getContext())
-        .load(image)
-        .into(view);
+    if (image.isEmpty()) {
+      Picasso.with(view.getContext())
+          .load(android.R.color.transparent)
+          .into(view);
+    } else {
+      Picasso.with(view.getContext())
+          .load(image)
+          .into(view);
+    }
   }
 }
