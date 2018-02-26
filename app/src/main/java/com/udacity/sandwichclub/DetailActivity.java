@@ -61,13 +61,18 @@ public class DetailActivity extends AppCompatActivity {
    */
   @BindingAdapter({"image"})
   public static void loadImage(ImageView view, String image) {
+    // Needs to be solve with if-else, otherwise exception would be thrown
     if (image.isEmpty()) {
       Picasso.with(view.getContext())
           .load(android.R.color.transparent)
+          .error(android.R.color.transparent)
+          .placeholder(android.R.color.transparent)
           .into(view);
     } else {
       Picasso.with(view.getContext())
           .load(image)
+          .error(android.R.color.transparent)
+          .placeholder(android.R.color.transparent)
           .into(view);
     }
   }
